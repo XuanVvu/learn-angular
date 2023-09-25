@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ChildComponent {
   @Input() data: string | undefined;
+  @Input() name: string | undefined;
   @Output() count = new EventEmitter<number>();
   countData = 0;
 
@@ -15,6 +16,10 @@ export class ChildComponent {
   handleClick() {
     this.countData ++;
     this.count.emit(this.countData);
+    
+  }
+  log123() {
+    console.log('123 from child');
     
   }
 

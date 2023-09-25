@@ -1,6 +1,33 @@
 <p>---------------</p>
 <p>parent works!</p>
 <p> {{countParent}}</p>
+
+<p [class.is-active]="isActive">name: {{name}}</p>
+<p>count: {{count}}</p>
+<div *ngIf="count >=3;else under18"> count ----- oke</div>
+
+<ng-template #under18>
+    <div>count ------- not ok</div>
+</ng-template>
+
+<button (click)="count = count - 1"> - </button>
+<button (click)="count = count + 1"> + </button>
+<input [type]="inputType" [(ngModel)]="name"/>
+
+<br>
+<button (click)="handleClickParent(name)">CLick</button>
+
+<br>
+<br>
+<br>
+<p>*--- NgFor ---*</p>
+
+<div *ngFor="let author of authors; index as idx; count as total">
+    <p>{{idx}} / {{total}} -- {{author.firstName}} - {{author.lastName}}</p>
+</div>
+<p>*--- NgFor ---*</p>
+
+<button (click)="appChildLog()">Click Log 123</button>
 <p>---------------</p>
-<app-child [data]="data" (count)="DataFromChild($event)"></app-child>
+<app-child #appChild [data]="data" [name]="name" (count)="DataFromChild($event)"></app-child>
 
